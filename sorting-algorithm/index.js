@@ -29,7 +29,7 @@ for (let i = 0; i < 5; i++) {
 }
 console.table(result)
 
-// creating bubble sort
+// bubble sort
 function bubbleSort(arr){
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr.length; j++) {
@@ -41,7 +41,7 @@ function bubbleSort(arr){
   return arr
 }
 
-// creating insertion sort
+// insertion sort
 function insertionSort(arr){
   for (let i = 0; i < arr.length; i++) {
     let j = i - 1
@@ -55,11 +55,10 @@ function insertionSort(arr){
   return arr
 }
 
-// creating selection sort
+// selection sort
 function selectionSort(arr){
-  let min
-  for (let i = 0; i < arr.length; i++) {
-    min = i
+  for (let i = 0; i < arr.length - 1; i++) {
+    let min = i
     for (let j = i + 1; j < arr.length; j++) {
       if(arr[j] < arr[min]){
         min = j
@@ -72,7 +71,7 @@ function selectionSort(arr){
   return arr
 }
 
-// creating merge sort
+// merge sort
 function mergeSort(arr){
   if(arr.length <= 1){
     return arr
@@ -81,7 +80,6 @@ function mergeSort(arr){
   const mid = Math.floor(arr.length / 2)
   const left = mergeSort(arr.slice(0, mid))
   const right = mergeSort(arr.slice(mid))
-
   const result = []
   let i = 0
   let j = 0
@@ -95,7 +93,7 @@ function mergeSort(arr){
   return [...result, ...left.slice(i), ...right.slice(j)]
 }
 
-// creating quick sort
+// quick sort
 function quickSort(arr){
   if(arr.length <= 1){
     return arr
@@ -104,7 +102,7 @@ function quickSort(arr){
   const pivot = arr[arr.length - 1]
   const left = []
   const right = []
-  for (let i = 0; i < arr.length - 1; i++) {
+  for(let i = 0; i < arr.length - 1; i++){
     if(arr[i] < pivot){
       left.push(arr[i])
     } else {
