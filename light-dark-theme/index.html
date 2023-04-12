@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    :root {
+      /* defining colors */
+      --light-background-color: #dee4e7;
+      --light-text-color: #222;
+      --dark-background-color: #37474f;
+      --dark-text-color: #e7e7e7;
+      
+      /* set default color to light */
+      --background-color: var(--light-background-color);
+      --text-color: var(--light-text-color);
+    }
+
+    @media (prefers-color-scheme: dark){
+      :root{
+        /* set color to dark if system is in dark mode */
+        --background-color: var(--dark-background-color);
+        --text-color: var(--dark-text-color);
+      }
+    }
+
+    /* force to light mode */
+    .light-mode {
+      --background-color: var(--light-background-color);
+      --text-color: var(--light-text-color);
+    }
+
+    /* force to dark mode */
+    .dark-mode {
+      --background-color: var(--dark-background-color);
+      --text-color: var(--dark-text-color);
+    }
+
+    body {
+      /* applying color */
+      background-color: var(--background-color);
+      color: var(--text-color);
+
+      padding: 1rem;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      transition-property: background-color color;
+      transition-duration: 300ms;
+      transition-timing-function: ease-in;
+    }
+    h1, h5, p { margin: 0 }
+  </style>
+</head>
+<body>
+  <select id="selector">
+    <option value="auto">Auto</option>
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+  </select>
+  <h1>Dark and White Mode</h1>
+  <h5>by <i>StingCode</i></h5>
+  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore tempora quia atque nemo, delectus, iusto facilis ea neque temporibus ut quibusdam ipsam velit vitae, commodi earum saepe animi in ipsa!</p>
+
+  <script>
+    document.getElementById("selector").oninput = (e) => {
+      document.body.classList = []
+      if(e.target.value != "auto"){
+        document.body.classList.add(e.target.value + "-mode")
+      }
+    }
+  </script>
+</body>
+</html>
