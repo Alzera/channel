@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    body {
+      margin: 0;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    h1, p { flex: 1 0 100%; }
+    img { flex: 1 }
+    section {
+      padding: 10rem 2rem;
+      color: #fff;
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem
+    }
+
+    /* setting default animation value */
+    section > * {
+      opacity: 0;
+      transform: translateX(-200px);
+    }
+
+    /* start animation if showed */
+    .show > * {
+      opacity: 1;
+      transform: none;
+
+      /* set delay by value set by javascript to create sequence animation */
+      transition: all 1s var(--transition-delay);
+    }
+  </style>
+</head>
+<body>
+  <section style="background: #00A6FB">
+    <h1>Beautiful Scroll Animation</h1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi optio a repellendus? Voluptas aliquid nisi ratione accusamus, quam recusandae nulla consequuntur. Sequi aliquam consequatur, sit voluptate laborum quos nesciunt voluptatem!</p>
+  </section>
+  <section style="background: #003554">
+    <h1>Beautiful Scroll Animation</h1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi optio a repellendus? Voluptas aliquid nisi ratione accusamus, quam recusandae nulla consequuntur. Sequi aliquam consequatur, sit voluptate laborum quos nesciunt voluptatem!</p>
+    <img src="https://picsum.photos/id/1/100" />
+    <img src="https://picsum.photos/id/2/100" />
+    <img src="https://picsum.photos/id/3/100" />
+    <img src="https://picsum.photos/id/4/100" />
+  </section>
+  <section style="background: #0582CA">
+    <h1>Beautiful Scroll Animation</h1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi optio a repellendus? Voluptas aliquid nisi ratione accusamus, quam recusandae nulla consequuntur. Sequi aliquam consequatur, sit voluptate laborum quos nesciunt voluptatem!</p>
+  </section>
+  <section style="background: #006494">
+    <h1>Beautiful Scroll Animation</h1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi optio a repellendus? Voluptas aliquid nisi ratione accusamus, quam recusandae nulla consequuntur. Sequi aliquam consequatur, sit voluptate laborum quos nesciunt voluptatem!</p>
+  </section>
+  <section style="background: #051923">
+    <h1>Beautiful Scroll Animation</h1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi optio a repellendus? Voluptas aliquid nisi ratione accusamus, quam recusandae nulla consequuntur. Sequi aliquam consequatur, sit voluptate laborum quos nesciunt voluptatem!</p>
+  </section>
+
+  <script>
+    // creating scroll listener
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(i => {
+        // add and removing show class if section is in viewport
+        i.target.classList[i.isIntersecting ? "add" : "remove"]("show")
+      })
+    })
+
+    document.querySelectorAll("section").forEach(section => {
+      // applying observer to each section
+      observer.observe(section);
+
+      // create delay by index for each section child
+      [...section.children].forEach((v, i) => {
+        v.style.setProperty("--transition-delay", (i * 200) + "ms")
+      })
+    })
+  </script>
+</body>
+</html>
