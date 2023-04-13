@@ -8,15 +8,15 @@
       --light-text-color: #222;
       --dark-background-color: #37474f;
       --dark-text-color: #e7e7e7;
-      
-      /* set default color to light */
+
+      /* set default theme to light */
       --background-color: var(--light-background-color);
       --text-color: var(--light-text-color);
     }
 
+    /* set automation to dark theme */
     @media (prefers-color-scheme: dark){
-      :root{
-        /* set color to dark if system is in dark mode */
+      :root {
         --background-color: var(--dark-background-color);
         --text-color: var(--dark-text-color);
       }
@@ -35,15 +35,17 @@
     }
 
     body {
-      /* applying color */
+      /* applying theme */
       background-color: var(--background-color);
       color: var(--text-color);
 
-      padding: 1rem;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      /* add transition to smooth the theme changes */
       transition-property: background-color color;
       transition-duration: 300ms;
       transition-timing-function: ease-in;
+
+      padding: 1rem;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
     h1, h5, p { margin: 0 }
   </style>
@@ -54,9 +56,9 @@
     <option value="light">Light</option>
     <option value="dark">Dark</option>
   </select>
-  <h1>Dark and White Mode</h1>
+  <h1>Dark and Light Mode</h1>
   <h5>by <i>StingCode</i></h5>
-  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore tempora quia atque nemo, delectus, iusto facilis ea neque temporibus ut quibusdam ipsam velit vitae, commodi earum saepe animi in ipsa!</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, sunt laborum doloremque qui est ex beatae eligendi repudiandae praesentium cupiditate facilis vero sit molestiae, corrupti, quis saepe atque odio adipisci.</p>
 
   <script>
     document.getElementById("selector").oninput = (e) => {
